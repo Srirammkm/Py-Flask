@@ -2,7 +2,7 @@ pipeline {
   environment {
   IBM_CLOUD_REGION = 'eu-de'
   REGISTRY_HOSTNAME = 'de.icr.io'
-  IKS_CLUSTER = 'c0qnsr4f0hems8rp3cmg'
+  IKS_CLUSTER = 'c0scccvf0kifenvcfav0'
   DEPLOYMENT_NAME = 'iks-test'
   PORT = '5001'
   registry = "srirammk18/flask-k8s"
