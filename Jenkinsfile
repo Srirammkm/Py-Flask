@@ -51,7 +51,7 @@ pipeline {
         sh '''
             ibmcloud ks cluster config --cluster ${IKS_CLUSTER}
             kubectl config current-context
-            kubectl delete deplyments -all
+            kubectl delete deployment ${DEPLOYMENT_NAME}
             kubectl create deployment ${DEPLOYMENT_NAME} --image=srirammk18/flask-k8s:12 -o yaml > deployment.yaml
             kubectl apply -f deployment.yaml
        
