@@ -51,11 +51,8 @@ pipeline {
         sh '''
             ibmcloud ks cluster config --cluster ${IKS_CLUSTER}
             kubectl config current-context
-            kubectl delete deployment ${DEPLOYMENT_NAME}
-            kubectl create deployment ${DEPLOYMENT_NAME} --image=srirammk18/flask-k8s:12 -o yaml > deployment.yaml
+            kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller- 0.32.0/deploy/static/provider/baremetal/deploy.yaml
             kubectl apply -f deployment.yaml
-       
-            kubectl create service loadbalancer ${DEPLOYMENT_NAME} --tcp=80:${PORT} -o yaml > service.yaml
             kubectl apply -f service.yaml
             kubectl get services -o wide
             '''
