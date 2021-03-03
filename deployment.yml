@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: flask-app
-        image: srirammk18/flask-k8s:'$BUILD_NUMBER'
+        image: srirammk18/flask-k8s:+'$BUILD_NUMBER'
         ports:
         - containerPort: 80
