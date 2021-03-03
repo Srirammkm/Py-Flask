@@ -19,3 +19,4 @@ spec:
         image: srirammk18/flask-k8s:latest
         ports:
         - containerPort: 80
+        imagePullPolicy: Always
