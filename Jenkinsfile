@@ -19,7 +19,7 @@ pipeline {
     stage('Build with Docker') {
       steps {
         script {
-        dockerImage = docker.build registry
+        dockerImage = docker.build registry + ":$BUILD_NUMBER"
         }
       }
     }
@@ -38,8 +38,7 @@ pipeline {
             ibmcloud ks cluster config --cluster ${IKS_CLUSTER}
             kubectl config current-context
             export BUILD_NUMBER=$BUILD_NUMBER
-            envsubst < deployment.yaml | kubectl apply -f -
-      
+            kubectl apply -f deployment.yml
             kubectl apply -f service.yml
             kubectl apply -f ingress.yml
             '''
