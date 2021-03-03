@@ -8,17 +8,6 @@ pipeline {
   }
   agent any 
   stages {
-    stage('Install IBM Cloud CLI') {
-      steps { 
-        sh ''' 
-            curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
-            ibmcloud --version
-            ibmcloud config --check-version=false
-            ibmcloud plugin install -f kubernetes-service
-            ibmcloud plugin install -f container-registry
-            '''
-      }
-    }
     stage('Authenticate with IBM Cloud CLI') {
       steps {
         sh '''
@@ -48,7 +37,6 @@ pipeline {
         sh '''
             ibmcloud ks cluster config --cluster ${IKS_CLUSTER}
             kubectl config current-context
-            kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.32.0/deploy/static/provider/baremetal/deploy.yaml
             kubectl apply -f deployment.yml
             kubectl apply -f service.yml
             kubectl apply -f ingress.yml
