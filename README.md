@@ -1,5 +1,1 @@
-Python app for DevOps Training
-webhook added successfully
-
-blah blah
-blah blah blah.
+Flask Application deployement in IBM Kubernetes Cluster
