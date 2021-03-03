@@ -1,1 +1,1 @@
-Flask Application deployement in IBM Kubernetes Cluster
+Flask Application deployement in IBM Kubernetes Cluster.
