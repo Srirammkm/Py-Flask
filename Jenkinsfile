@@ -37,7 +37,9 @@ pipeline {
         sh '''
             ibmcloud ks cluster config --cluster ${IKS_CLUSTER}
             kubectl config current-context
-            kubectl apply -f deployment.yml
+            export BUILD_NUMBER=$BUILD_NUMBER
+            envsubst < deployment.yaml | kubectl apply -f -
+      
             kubectl apply -f service.yml
             kubectl apply -f ingress.yml
             '''
