@@ -49,8 +49,8 @@ pipeline {
             ibmcloud ks cluster config --cluster ${IKS_CLUSTER}
             kubectl config current-context
             kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.32.0/deploy/static/provider/baremetal/deploy.yaml
-            kubectl apply -f deployment.yaml
-            kubectl apply -f service.yaml
+            kubectl apply -f deployment.yml
+            kubectl apply -f service.yml
             kubectl apply -f ingress.yml
             '''
       }
