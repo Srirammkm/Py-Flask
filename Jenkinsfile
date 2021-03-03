@@ -1,10 +1,7 @@
 pipeline {
   environment {
-  IBM_CLOUD_REGION = 'eu-de'
-  REGISTRY_HOSTNAME = 'de.icr.io'
-  IKS_CLUSTER = 'c0scccvf0kifenvcfav0'
-  DEPLOYMENT_NAME = 'iks-test'
-  PORT = '5001'
+  IBM_CLOUD_REGION = 'us-south'
+  IKS_CLUSTER = 'c0uvrhfd0v1b3bd432lg'
   registry = "srirammk18/flask-k8s"
   registryCredential = 'dockerhub_id'
   dockerImage = ''
@@ -54,7 +51,7 @@ pipeline {
             kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller- 0.32.0/deploy/static/provider/baremetal/deploy.yaml
             kubectl apply -f deployment.yaml
             kubectl apply -f service.yaml
-            kubectl get services -o wide
+            kubectl apply -f ingress.yml
             '''
       }
     }
