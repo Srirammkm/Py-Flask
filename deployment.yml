@@ -20,3 +20,11 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
+      - name: db
+        image: srirammk18/mysql:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: root
