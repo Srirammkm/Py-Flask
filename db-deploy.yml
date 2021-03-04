@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysql
+  name: database
   labels:
     app: db
 spec:
@@ -15,15 +15,12 @@ spec:
         app: db
     spec:
       containers:
-      - name: mysql
-        image: mysql
-        imagePullPolicy: Never
+      - name: database
+        image: srirammk18/mysql
+        imagePullPolicy: Always
         env:
         - name: MYSQL_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: flaskapi-secrets
-              key: db_root_password
+          value: root
         ports:
         - containerPort: 3306
           name: db-container
