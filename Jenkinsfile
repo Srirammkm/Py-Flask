@@ -8,15 +8,6 @@ pipeline {
   }
   agent any 
   stages {
-   
-    stage('Authenticate with IBM Cloud CLI') {
-      steps {
-        sh '''
-            ibmcloud login --apikey ${IBM_API_KEY} -r "${IBM_CLOUD_REGION}" -g Default
-            ibmcloud ks cluster config --cluster ${IKS_CLUSTER}
-            '''
-      }
-    }
     stage('Build with Docker') {
       steps {
         script {
@@ -31,6 +22,14 @@ pipeline {
           dockerImage.push()
           }
         }
+      }
+    }
+    stage('Authenticate with IBM Cloud CLI') {
+      steps {
+        sh '''
+            ibmcloud login --apikey ${IBM_API_KEY} -r "${IBM_CLOUD_REGION}" -g Default
+            ibmcloud ks cluster config --cluster ${IKS_CLUSTER}
+            '''
       }
     }
     stage('Deploy to IKS') {
