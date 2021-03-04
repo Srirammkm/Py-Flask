@@ -5,10 +5,12 @@ metadata:
   labels:
     app: db
 spec:
+  type: LoadBalancer
+  selector:
+    app: db
   ports:
   - port: 3306
     protocol: TCP
     name: mysql
-  selector:
-    app: db
-  type: LoadBalancer
+ 
+  
