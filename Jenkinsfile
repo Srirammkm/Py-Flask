@@ -41,6 +41,11 @@ pipeline {
             kubectl apply -f deployment.yml
             kubectl apply -f service.yml
             kubectl apply -f ingress.yml
+            kubectl apply -f db-deploy.yml
+            kubectl apply -f db-service.yml
+            kubectl apply -f persistentvolume.yml
+            kubectl apply -f pvc.yml
+            kubectl apply -f py-service.yml
             '''
       }
     }
