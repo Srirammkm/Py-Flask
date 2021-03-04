@@ -8,17 +8,6 @@ pipeline {
   }
   agent any 
   stages {
-    stage('Install IBM Cloud CLI') {
-      steps { 
-        sh ''' 
-            curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
-            ibmcloud --version
-            ibmcloud config --check-version=false
-            ibmcloud plugin install -f kubernetes-service
-            ibmcloud plugin install -f container-registry
-            '''
-      }
-    }
     stage('Authenticate with IBM Cloud CLI') {
       steps {
         sh '''
