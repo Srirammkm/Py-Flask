@@ -38,7 +38,6 @@ pipeline {
             ibmcloud ks cluster config --cluster ${IKS_CLUSTER}
             kubectl config current-context
             export BUILD_NUMBER=$BUILD_NUMBER
-            kubectl apply -f deployment.yml
             kubectl apply -f service.yml
             kubectl apply -f ingress.yml
             kubectl apply -f db-deploy.yml
@@ -46,6 +45,7 @@ pipeline {
             kubectl apply -f persistentvolume.yml
             kubectl apply -f pvc.yml
             kubectl apply -f py-service.yml
+            kubectl apply -f deployment.yml
             '''
       }
     }
