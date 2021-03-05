@@ -4,6 +4,7 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 mydb = mysql.connector.connect(
   host="localhost",
+  port: 30002
   user="root",
   password="root",
   database="MyDB"
