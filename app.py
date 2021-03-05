@@ -3,13 +3,12 @@ import mysql.connector
 from flask import Flask, render_template, request
 app = Flask(__name__)
 mydb = mysql.connector.connect(
-  host="localhost",
-  port: 30002
+  host="169.57.56.131",
+  port=30002,
   user="root",
   password="root",
   database="MyDB"
 )
-
 mycursor = mydb.cursor()
 
 @app.route('/', methods=['GET', 'POST'])
@@ -24,4 +23,5 @@ def index():
         mydb.commit()
     return render_template('index.html')
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80, debug=True)
+    app.run()
+
